@@ -7,13 +7,16 @@ class SearchFilter extends Component {
       <form>
         <h2>Print Type:</h2>
         <select name="All">
-          <option value="one">One</option>
-          <option value="two">Two</option>
+          <option value="books">Books</option>
+          <option value="magazines">Magazines</option>
         </select>
         <h2>Book Type:</h2>
-        <select>
-          <option value="No Filter">No Filter</option>
-          <option value="Filter">Filter</option>
+        <select name="Filter">
+          <option value="partial">Partial</option>
+          <option value="full">Full</option>
+          <option value="free-ebooks">Free eBooks</option>
+          <option value="paid-ebooks">Paid eBooks</option>
+          <option value="ebooks">eBooks</option>
         </select>
       </form>
     );

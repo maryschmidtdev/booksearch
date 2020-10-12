@@ -1,30 +1,23 @@
 import React, { Component } from "react";
 import "./Results.css";
-import Books from "../Books/Books";
+import Book from "../Book/Book";
 
 class Results extends Component {
   render() {
-    const title = this.state.bookData.items.volumeInfo.title;
-    const authors = this.state.bookData.items.volumeInfo.authors;
-    const amount = this.state.bookData.items.saleInfo.retailPrice.amount;
-    const currency = this.state.bookData.items.saleInfo.retailPrice
-      .currencyCode;
-    const description = this.state.bookData.items.volumeInfo.description;
-
-    const book = this.props.state.bookData.map(
-      <Books
-        title={title}
-        authors={authors}
-        amount={amount}
-        currency={currency}
-        description={description}
-      />
-    );
-    return (
-      <div>
-        <Books />
-      </div>
-    );
+    const createBook = this.props.books.map((book) => {
+      console.log(book);
+      return (
+        <div>
+          <Book
+            title={book.volumeInfo.title}
+            authors={book.volumeInfo.authors}
+            categories={book.volumeInfo.categories}
+            description={book.volumeInfo.description}
+          />
+        </div>
+      );
+    });
+    return <div>{createBook}</div>;
   }
 }
 export default Results;
