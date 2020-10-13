@@ -31,17 +31,33 @@ class App extends Component {
       });
   }
 
+  handleSearch = (searchTerm) => {
+    this.setState({ search: searchTerm });
+  };
+  handlePrintType = (printValue) => {
+    this.setState({ printType: printValue });
+  };
+  handleBookType = (bookValue) => {
+    this.setState({ bookType: bookValue });
+  };
+
   render() {
     return Object.keys(this.state.bookData).length ? (
       <main>
         <div className="App">
           <Header />
-          <Search />
+          <Search
+            query={this.handleSearch}
+            print={this.handlePrintType}
+            type={this.handleBookType}
+          />
 
           <Results books={this.state.bookData.items} />
         </div>
       </main>
-    ) : null;
+    ) : (
+      <h1>loading</h1>
+    );
   }
 }
 

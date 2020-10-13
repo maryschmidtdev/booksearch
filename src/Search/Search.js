@@ -7,8 +7,8 @@ class Search extends Component {
   render() {
     return (
       <div>
-        <SearchBar />
-        <SearchFilter />
+        <SearchBar query={this.props.query} />
+        <SearchFilter print={this.props.print} type={this.props.type} />
       </div>
     );
   }

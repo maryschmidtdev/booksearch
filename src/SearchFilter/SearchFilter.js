@@ -2,6 +2,15 @@ import React, { Component } from "react";
 import "./SearchFilter.css";
 
 class SearchFilter extends Component {
+  setPrintType = (event) => {
+    console.log(event.target.value, "printvalue");
+    this.setState({ printValue: event.target.value });
+  };
+
+  setBookType = (event) => {
+    console.log(event.target.value, "bookvalue");
+    this.setState({ bookValue: event.target.value });
+  };
   render() {
     return (
       <form>
