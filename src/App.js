@@ -5,7 +5,7 @@ import Search from "./Search/Search";
 import Results from "./Results/Results";
 // import Books from "./Books/Books";
 
-const url =
+const initialUrl =
   "https://www.googleapis.com/books/v1/volumes?q=harry+potter&key=AIzaSyDAsJd2FKDaWfHHb5cCddBEUTvIzkQurmA";
 
 class App extends Component {
@@ -15,7 +15,7 @@ class App extends Component {
       bookData: {},
     };
   }
-  componentDidMount() {
+  fetchBooks = (url) => {
     fetch(url)
       .then((response) => {
         if (!response.ok) {
@@ -29,10 +29,18 @@ class App extends Component {
       .catch((err) => {
         this.setState({ error: err.message });
       });
+  };
+
+  componentDidMount() {
+    this.fetchBooks(initialUrl);
   }
 
   handleSearch = (searchTerm) => {
     this.setState({ search: searchTerm });
+    const newSearch = searchTerm.replace(" ", "+");
+    this.fetchBooks(
+      `https://www.googleapis.com/books/v1/volumes?q=${newSearch}&key=AIzaSyDAsJd2FKDaWfHHb5cCddBEUTvIzkQurmA`
+    );
   };
   handlePrintType = (printValue) => {
     this.setState({ printType: printValue });
